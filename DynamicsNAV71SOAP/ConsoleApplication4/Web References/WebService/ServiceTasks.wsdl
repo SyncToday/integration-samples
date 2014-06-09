@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/servicetasks" targetNamespace="urn:microsoft-dynamics-schemas/page/servicetasks" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/servicetasks" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Priority">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Low" />
+          <xsd:enumeration value="Medium" />
+          <xsd:enumeration value="High" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Document_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Quote" />
+          <xsd:enumeration value="Order" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ServiceTasks">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ResourceFilter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ResourceGroupFilter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RespDateFilter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServOrderFilter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RepairStatusFilter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Response_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Response_Time" type="xsd:time" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Priority" type="tns:Priority" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_Type" type="tns:Document_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Repair_Status_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Service_Item_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Customer_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Cust_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Service_Shelf_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Item_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Service_Item_Group_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Variant_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Serial_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Warranty" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Contract_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Allocations" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ServiceTasks_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ServiceTasks" type="tns:ServiceTasks" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ServiceTasks_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ResourceFilter" />
+          <xsd:enumeration value="ResourceGroupFilter" />
+          <xsd:enumeration value="RespDateFilter" />
+          <xsd:enumeration value="AllocationStatus" />
+          <xsd:enumeration value="DocFilter" />
+          <xsd:enumeration value="ServOrderFilter" />
+          <xsd:enumeration value="RepairStatusFilter" />
+          <xsd:enumeration value="Response_Date" />
+          <xsd:enumeration value="Response_Time" />
+          <xsd:enumeration value="Priority" />
+          <xsd:enumeration value="Document_Type" />
+          <xsd:enumeration value="Document_No" />
+          <xsd:enumeration value="Repair_Status_Code" />
+          <xsd:enumeration value="Service_Item_No" />
+          <xsd:enumeration value="Customer_No" />
+          <xsd:enumeration value="Ship_to_Code" />
+          <xsd:enumeration value="Cust_Name" />
+          <xsd:enumeration value="Service_Shelf_No" />
+          <xsd:enumeration value="Item_No" />
+          <xsd:enumeration value="Service_Item_Group_Code" />
+          <xsd:enumeration value="Variant_Code" />
+          <xsd:enumeration value="Serial_No" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="Warranty" />
+          <xsd:enumeration value="Contract_No" />
+          <xsd:enumeration value="No_of_Allocations" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ServiceTasks_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:ServiceTasks_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Document_Type" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Document_No" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ServiceTasks" type="tns:ServiceTasks" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ServiceTasks" type="tns:ServiceTasks" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:ServiceTasks_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:ServiceTasks_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ServiceTasks" type="tns:ServiceTasks" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ServiceTasks" type="tns:ServiceTasks" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ServiceTasks_List" type="tns:ServiceTasks_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ServiceTasks_List" type="tns:ServiceTasks_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <portType name="ServiceTasks_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+  </portType>
+  <binding name="ServiceTasks_Binding" type="tns:ServiceTasks_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/servicetasks:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ServiceTasks_Service">
+    <port name="ServiceTasks_Port" binding="tns:ServiceTasks_Binding">
+      <address location="http://nunav1.corp.naseukoly.cz:7047/DynamicsNAV71/WS/CRONUS%20CZ%20s.r.o./Page/ServiceTasks" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>
